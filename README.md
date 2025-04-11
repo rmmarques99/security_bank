@@ -49,12 +49,16 @@ This system was designed with a strong emphasis on security, ensuring:
 
 ## 🛡️ Security Highlights
 
-| Attack Type            | Mitigation                                                                 |
-|------------------------|----------------------------------------------------------------------------|
-| 🕘 Replay Attacks      | Unique `nonce` + timestamp in every request (10s validity window)          |
-| 🛑 DoS Attacks         | 2048-byte max packet size, timeout-based socket handling, semaphore limit  |
-| ⚙️ Race Conditions     | Fine-grained locks per account and global resource protection              |
-| 🔑 Key Separation      | AES and HMAC keys derived independently using Argon2id                     |
+| Security Property / Attack Type | Mitigation                                                                 |
+|----------------------------------|----------------------------------------------------------------------------|
+| 🕵️ Confidentiality               | AES encryption (CBC mode) with fresh IV for each message                  |
+| 🧾 Integrity                     | HMAC-SHA256 authentication covering salt, IV and ciphertext              |
+| ✅ Authenticity                 | RSA-OAEP key exchange + `.card`-based client authentication              |
+| 🕘 Replay Attacks                | Unique `nonce` + timestamp in every request (10s validity window)        |
+| 🛑 DoS Attacks                   | 2048-byte max packet size, socket timeouts, semaphore (20 threads max)   |
+| ⚙️ Race Conditions               | Fine-grained per-account locks and global locking on shared structures   |
+| 🔑 Key Separation                | AES and HMAC keys derived separately using Argon2id + unique salt        |
+
 
 ---
 
