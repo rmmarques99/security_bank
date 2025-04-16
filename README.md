@@ -4,18 +4,18 @@ This project simulates a secure client-server banking system implemented in Pyth
 
 ---
 
-## 🔐 Objectives
+## Objectives
 
 This system was designed with a strong emphasis on security, ensuring:
 
-- ✅ **Confidentiality** – using AES-CBC encryption
-- ✅ **Integrity** – using HMAC-SHA256
-- ✅ **Authenticity** – RSA-based key exchange + local `.card` authentication
-- ✅ **Availability** – protections against replay and denial-of-service (DoS) attacks
+-  **Confidentiality** – using AES-CBC encryption
+-  **Integrity** – using HMAC-SHA256
+-  **Authenticity** – RSA-based key exchange + local `.card` authentication
+-  **Availability** – protections against replay and denial-of-service (DoS) attacks
 
 ---
 
-## 🧠 Key Technologies & Concepts
+## Key Technologies & Concepts
 
 - **Python 3**
 - **Sockets (TCP/IP)**
@@ -27,9 +27,9 @@ This system was designed with a strong emphasis on security, ensuring:
 
 ---
 
-## 🧩 Architecture
+##  Architecture
 
-### 🖥️ `Bank.py` – Server
+###  `Bank.py` – Server
 
 - Handles account management and transaction processing
 - Uses RSA to decrypt the session key from the client
@@ -38,7 +38,7 @@ This system was designed with a strong emphasis on security, ensuring:
 - Limits active connections (max 20) using `threading.Semaphore`
 - Handles SIGTERM/SIGINT gracefully
 
-### 🏧 `ATM.py` – Client
+### `ATM.py` – Client
 
 - Generates a unique 32-byte session key and encrypts it with the bank's public RSA key
 - Creates and uses a local `.card` file for authentication
@@ -51,27 +51,27 @@ This system was designed with a strong emphasis on security, ensuring:
 
 | Security Property / Attack Type | Mitigation                                                                 |
 |----------------------------------|----------------------------------------------------------------------------|
-| 🕵️ Confidentiality               | AES encryption (CBC mode) with fresh IV for each message                  |
-| 🧾 Integrity                     | HMAC-SHA256 authentication covering salt, IV and ciphertext              |
-| ✅ Authenticity                 | RSA-OAEP key exchange + `.card`-based client authentication              |
-| 🕘 Replay Attacks                | Unique `nonce` + timestamp in every request (10s validity window)        |
-| 🛑 DoS Attacks                   | 2048-byte max packet size, socket timeouts, semaphore (20 threads max)   |
-| ⚙️ Race Conditions               | Fine-grained per-account locks and global locking on shared structures   |
-| 🔑 Key Separation                | AES and HMAC keys derived separately using Argon2id + unique salt        |
+|  Confidentiality               | AES encryption (CBC mode) with fresh IV for each message                  |
+|  Integrity                     | HMAC-SHA256 authentication covering salt, IV and ciphertext              |
+|  Authenticity                 | RSA-OAEP key exchange + `.card`-based client authentication              |
+|  Replay Attacks                | Unique `nonce` + timestamp in every request (10s validity window)        |
+|  DoS Attacks                   | 2048-byte max packet size, socket timeouts, semaphore (20 threads max)   |
+|  Race Conditions               | Fine-grained per-account locks and global locking on shared structures   |
+|  Key Separation                | AES and HMAC keys derived separately using Argon2id + unique salt        |
 
 
 ---
 
-## ▶️ Running the System
+## ▶ Running the System
 
-### 📦 Install Dependencies
+###  Install Dependencies
 
 ```bash
 pip install cryptography argon2-cffi pycryptodome
 
 
 
-## 🚀 Start the Server (Bank)
+##  Start the Server (Bank)
 python Bank.py -p 3000 -s bank.auth
 
 
@@ -90,7 +90,7 @@ python ATM.py -a john -g
 
 
 
-##  📁 Project Structure
+##  Project Structure
 ├── ATM.py            # Secure ATM client
 ├── Bank.py           # Secure banking server
 ├── bank.auth         # Bank's RSA public key (shared with clients)
