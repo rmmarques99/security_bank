@@ -47,7 +47,7 @@ This system was designed with a strong emphasis on security, ensuring:
 
 ---
 
-## 🛡️ Security Highlights
+## Security Highlights
 
 | Security Property / Attack Type | Mitigation                                                                 |
 |----------------------------------|----------------------------------------------------------------------------|
@@ -62,7 +62,7 @@ This system was designed with a strong emphasis on security, ensuring:
 
 ---
 
-## ▶ Running the System
+## Running the System
 
 ###  Install Dependencies
 
