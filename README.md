@@ -17,7 +17,7 @@ This system was designed with a strong emphasis on security, ensuring:
 
 ## Key Technologies & Concepts
 
-- **Python 3**
+- **Python 3*
 - **Sockets (TCP/IP)**
 - **RSA 2048-bit + OAEP** for secure key exchange
 - **AES-CBC (AES-128)** for symmetric encryption
